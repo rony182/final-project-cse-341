@@ -2,7 +2,7 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
   info: {
-    title: 'My Sports API',
+    title: 'Library API',
     description: 'Description',
   },
   // host: ['final-project-cse-341.onrender.com'],
