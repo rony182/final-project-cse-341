@@ -1,0 +1,140 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Library API",
+    "description": "Description",
+    "version": "1.0.0"
+  },
+  "host": [
+    "localhost:8080"
+  ],
+  "basePath": "/",
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/users/": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Endpoint create a user",
+        "parameters": [
+          {
+            "name": "User",
+            "in": "body",
+            "description": "User Information",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "example": "Alirio"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Mieres"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "andres@test.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "$ecretPassword"
+                },
+                "birthday": {
+                  "type": "string",
+                  "example": "06/19/2000"
+                },
+                "phone": {
+                  "type": "string",
+                  "example": "1234567890"
+                },
+                "address": {
+                  "type": "string",
+                  "example": "Calle 123"
+                },
+                "role": {
+                  "type": "string",
+                  "example": "USER_ROLE"
+                }
+              },
+              "required": [
+                "firstName",
+                "lastName",
+                "email",
+                "password",
+                "birthday",
+                "phone",
+                "address",
+                "role"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "description": "Login user",
+        "parameters": [
+          {
+            "name": "Product",
+            "in": "body",
+            "description": "Product Information",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "test1@gmail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "12345"
+                }
+              },
+              "required": [
+                "email",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    }
+  }
+}
