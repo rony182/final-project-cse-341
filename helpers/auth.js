@@ -1,5 +1,5 @@
 const { check } = require('express-validator');
-const validateFields = require('../helpers/validation');
+const { validateFields } = require('../middlewares/validate-fields');
 
 const validateLogin = [
   check('email', 'Email is required').isEmail(),

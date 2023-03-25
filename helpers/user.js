@@ -1,11 +1,11 @@
 const { check } = require('express-validator');
-const validateFields = require('./validation');
+const { validateFields } = require('../middlewares/validate-fields');
 const validateJWT = require('../middlewares/validate-jwt')
 const { emailExists, userExistById, isValidRole } = require('./db-validator')
 const { hasRole, isAdminRole } = require('../middlewares/validate-roles');
 
 const createUserValidation = [
-  validateJWT,
+  // validateJWT,
   check('firstName', 'Firstname is required')
     .not()
     .isEmpty()
