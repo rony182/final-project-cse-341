@@ -33,7 +33,7 @@ const createUserValidation = [
     .isString()
     .withMessage('Address must be a string'),
   check('email').custom(emailExists),
-  check('role').custom(isValidRole),
+  // check('role').custom(isValidRole),
   validateFields
 ];
 
