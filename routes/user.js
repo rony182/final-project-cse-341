@@ -10,7 +10,7 @@ const {
 } = require('../helpers/user');
 const validateFields = require('../helpers/validation');
 const validateJWT = require('../middlewares/validate-jwt');
-const isAdminRole = require('../middlewares/validate-roles');
+// const isAdminRole = require('../middlewares/validate-roles');
 
 // userRouter.get('/', [validateJWT, isAdminRole, validateFields], findAll);
 // userRouter.get('/:id', findOneValidation, findOne);
