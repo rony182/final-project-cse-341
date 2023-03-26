@@ -39,7 +39,7 @@ const createUserValidation = [
 
 const updateUserValidation = [
   validateJWT,
-  isAdminRole,
+  // isAdminRole,
   check('id', 'Is not a mongodb id').isMongoId(),
   check('id').custom(userExistById),
   check('firstName', 'Firstname must be a string').optional().isString(),
@@ -52,7 +52,7 @@ const updateUserValidation = [
 
 const deleteUserValidation = [
   validateJWT,
-  isAdminRole,
+  // isAdminRole,
   check('id', 'Is not a mongodb id').isMongoId(),
   check('id').custom(userExistById),
   validateFields
