@@ -1,12 +1,12 @@
-const Role = require('../models/');
-// const User = require('../models/User');
+const Role = require('../models/Role');
+const User = require('../models/User');
 
-//  const isValidRole = async (role = '') => {
-//   const verifyRole = await Role.findOne({ role });
-//   if (!verifyRole) {
-//     throw new Error(`Role ${role} not exist in DB`);
-//   }
-// };
+ const isValidRole = async (role = '') => {
+  const verifyRole = await Role.findOne({ role });
+  if (!verifyRole) {
+    throw new Error(`Role ${role} not exist in DB`);
+  }
+};
 
  const emailExists = async (email) => {
   const validateEmail = await User.findOne({ email });

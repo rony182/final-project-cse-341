@@ -2,7 +2,7 @@ const { check } = require('express-validator');
 const { validateFields } = require('../middlewares/validate-fields');
 const validateJWT = require('../middlewares/validate-jwt')
 const { emailExists, userExistById } = require('./db-validator')
-// const { hasRole, isAdminRole } = require('../middlewares/validate-roles');
+const { hasRole, isAdminRole } = require('../middlewares/validate-roles');
 
 const createUserValidation = [
   // validateJWT,
@@ -33,13 +33,13 @@ const createUserValidation = [
     .isString()
     .withMessage('Address must be a string'),
   check('email').custom(emailExists),
-  // check('role').custom(isValidRole),
+  check('role').custom(isValidRole),
   validateFields
 ];
 
 const updateUserValidation = [
   validateJWT,
-  // isAdminRole,
+  isAdminRole,
   check('id', 'Is not a mongodb id').isMongoId(),
   check('id').custom(userExistById),
   check('firstName', 'Firstname must be a string').optional().isString(),
@@ -52,7 +52,7 @@ const updateUserValidation = [
 
 const deleteUserValidation = [
   validateJWT,
-  // isAdminRole,
+  isAdminRole,
   check('id', 'Is not a mongodb id').isMongoId(),
   check('id').custom(userExistById),
   validateFields

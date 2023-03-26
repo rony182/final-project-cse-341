@@ -1,5 +1,5 @@
 const { validationResult } = require('express-validator');
-const Review = require('../models/review');
+const Review = require('../models/Review');
 
 // Get a review by ID
 exports.getReview = async (req, res, next) => {
