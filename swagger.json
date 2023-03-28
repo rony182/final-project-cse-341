@@ -6,7 +6,7 @@
     "version": "1.0.0"
   },
   "host": [
-    "localhost:8080"
+    "final-project-cse-341.onrender.com"
   ],
   "basePath": "/",
   "schemes": [
