@@ -6,7 +6,9 @@
     "version": "1.0.0"
   },
   "host": [
+
     "final-project-cse-341.onrender.com"
+
   ],
   "basePath": "/",
   "schemes": [
@@ -15,6 +17,33 @@
   ],
   "paths": {
     "/users/": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Endpoint get all users",
+        "parameters": [
+          {
+            "name": "apiKey",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
       "post": {
         "tags": [
           "Users"
@@ -78,6 +107,112 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Endpoint update a user",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Contact",
+            "in": "body",
+            "description": "User Information",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "example": "David"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Zalav"
+                },
+                "birthday": {
+                  "type": "string",
+                  "example": "06/19/1980"
+                },
+                "phone": {
+                  "type": "string",
+                  "example": "1234567890"
+                },
+                "address": {
+                  "type": "string",
+                  "example": "Calle 123"
+                }
+              },
+              "required": [
+                "firstName",
+                "lastName",
+                "birthday",
+                "phone",
+                "address"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Endpoint delete a user",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           },
           "500": {
             "description": "Internal Server Error"
