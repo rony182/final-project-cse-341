@@ -5,8 +5,8 @@ const doc = {
     title: 'Library API',
     description: 'Description',
   },
-  // host: ['final-project-cse-341.onrender.com'],
-  host: ['localhost:8080'],
+  host: ['final-cse-341-group.onrender.com'],
+  // host: ['localhost:8080'],
 
   schemes: ['https', 'http'],
 };
