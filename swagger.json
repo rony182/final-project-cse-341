@@ -969,7 +969,10 @@
     },
     "/books/book/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Books"
+        ],
+        "description": "Endpoint gets Book by Id",
         "parameters": [
           {
             "name": "id",
@@ -988,12 +991,20 @@
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Books"
+        ],
+        "description": "Endpoint deletes book by Id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
+            "type": "string"
+          },
+          {
+            "name": "apiKey",
+            "in": "header",
             "type": "string"
           }
         ],
@@ -1007,13 +1018,59 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": [
+          "Books"
+        ],
+        "description": "Endpoint updates an existing book",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "apiKey",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "Book",
+            "in": "body",
+            "description": "Book Information",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "The Bible"
+                },
+                "pages": {
+                  "type": "string",
+                  "example": "987"
+                },
+                "author": {
+                  "type": "string",
+                  "example": "64237db7f22b89b6a6c91aaa"
+                },
+                "datePublished": {
+                  "type": "string",
+                  "example": "1990-02-21"
+                },
+                "publisher": {
+                  "type": "string",
+                  "example": "Holy Publisher"
+                }
+              },
+              "required": [
+                "title",
+                "pages",
+                "author",
+                "datePublished",
+                "publisher"
+              ]
+            }
           }
         ],
         "responses": {
@@ -1028,7 +1085,10 @@
     },
     "/books/book": {
       "get": {
-        "description": "",
+        "tags": [
+          "Books"
+        ],
+        "description": "Endpoint gets all Books",
         "parameters": [],
         "responses": {
           "200": {
@@ -1040,8 +1100,55 @@
         }
       },
       "post": {
-        "description": "",
-        "parameters": [],
+        "tags": [
+          "Books"
+        ],
+        "description": "Endpoint creates a new Books",
+        "parameters": [
+          {
+            "name": "apiKey",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "Book",
+            "in": "body",
+            "description": "Book Information",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "The Bible"
+                },
+                "pages": {
+                  "type": "string",
+                  "example": "987"
+                },
+                "author": {
+                  "type": "string",
+                  "example": "64237db7f22b89b6a6c91aaa"
+                },
+                "datePublished": {
+                  "type": "string",
+                  "example": "1990-02-21"
+                },
+                "publisher": {
+                  "type": "string",
+                  "example": "Holy Publisher"
+                }
+              },
+              "required": [
+                "title",
+                "pages",
+                "author",
+                "datePublished",
+                "publisher"
+              ]
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
