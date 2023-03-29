@@ -28,7 +28,7 @@ const validateJWT = async (req = Request, res= Response, next) => {
       msg: 'Token not valid'
     });
   }
-
+  
   console.log(token);
 };
 

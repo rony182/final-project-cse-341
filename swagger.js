@@ -9,6 +9,13 @@ const doc = {
   // host: ['localhost:8080'],
 
   schemes: ['https', 'http'],
+  securityDefinitions: {
+    Bearer: {
+      type: 'apiKey',
+      name: 'Authorization',
+      in: 'header',
+    },
+  },
 };
 
 const outputFile = './swagger.json';

@@ -6,15 +6,20 @@
     "version": "1.0.0"
   },
   "host": [
-
-    "final-project-cse-341.onrender.com"
-
+    "localhost:8080"
   ],
   "basePath": "/",
   "schemes": [
     "https",
     "http"
   ],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
   "paths": {
     "/users/": {
       "get": {
@@ -266,34 +271,234 @@
     },
     "/authors/": {
       "post": {
-        "description": "",
+        "tags": [
+          "Authors"
+        ],
+        "description": "Endpoint to create an author",
         "parameters": [
           {
-            "name": "body",
+            "name": "Author",
             "in": "body",
+            "description": "Author Information",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
-                  "example": "any"
+                "type": {
+                  "type": "string",
+                  "example": "object"
                 },
-                "birthdate": {
-                  "example": "any"
-                },
-                "nationality": {
-                  "example": "any"
-                },
-                "biography": {
-                  "example": "any"
-                },
-                "website": {
-                  "example": "any"
-                },
-                "socialMediaLinks": {
-                  "example": "any"
-                },
-                "contactInformation": {
-                  "example": "any"
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "Mario Vargas Llosa"
+                        }
+                      }
+                    },
+                    "birthdate": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "format": {
+                          "type": "string",
+                          "example": "date"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "1936-03-28"
+                        }
+                      }
+                    },
+                    "nationality": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "Peruvian"
+                        }
+                      }
+                    },
+                    "biography": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "Lorem ipsum dolor sit amet"
+                        }
+                      }
+                    },
+                    "website": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "format": {
+                          "type": "string",
+                          "example": "url"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "https://mariovargasllosa.net"
+                        }
+                      }
+                    },
+                    "socialMediaLinks": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "array"
+                        },
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "example": "object"
+                            },
+                            "properties": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "example": "string"
+                                    },
+                                    "example": {
+                                      "type": "string",
+                                      "example": "Twitter"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "example": "string"
+                                    },
+                                    "format": {
+                                      "type": "string",
+                                      "example": "url"
+                                    },
+                                    "example": {
+                                      "type": "string",
+                                      "example": "https://www.twitter.com/mariovargasllosa"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "example": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "example": "Twitter"
+                              },
+                              "url": {
+                                "type": "string",
+                                "example": "https://www.twitter.com/mariovargasllosa"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "contactInformation": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "array"
+                        },
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "example": "object"
+                            },
+                            "properties": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "example": "string"
+                                    },
+                                    "example": {
+                                      "type": "string",
+                                      "example": "Email"
+                                    }
+                                  }
+                                },
+                                "value": {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "example": "string"
+                                    },
+                                    "example": {
+                                      "type": "string",
+                                      "example": "mariovargasllosa@example.com"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "example": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "example": "Email"
+                              },
+                              "value": {
+                                "type": "string",
+                                "example": "mariovargasllosa@example.com"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -306,6 +511,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -317,6 +525,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
@@ -339,6 +550,9 @@
           "200": {
             "description": "OK"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -348,57 +562,250 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": [
+          "Authors"
+        ],
+        "summary": "Update an author by ID",
+        "description": "Updates an existing author in the database.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "ID of the author to update"
           },
           {
-            "name": "body",
+            "name": "Author",
             "in": "body",
+            "description": "Author Information",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
-                  "example": "any"
+                "type": {
+                  "type": "string",
+                  "example": "object"
                 },
-                "birthdate": {
-                  "example": "any"
-                },
-                "nationality": {
-                  "example": "any"
-                },
-                "biography": {
-                  "example": "any"
-                },
-                "website": {
-                  "example": "any"
-                },
-                "socialMediaLinks": {
-                  "example": "any"
-                },
-                "contactInformation": {
-                  "example": "any"
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "Mario Vargas Llosa"
+                        }
+                      }
+                    },
+                    "birthdate": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "format": {
+                          "type": "string",
+                          "example": "date"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "1936-03-28"
+                        }
+                      }
+                    },
+                    "nationality": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "Peruvian"
+                        }
+                      }
+                    },
+                    "biography": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "Lorem ipsum dolor sit amet"
+                        }
+                      }
+                    },
+                    "website": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "format": {
+                          "type": "string",
+                          "example": "url"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "https://mariovargasllosa.net"
+                        }
+                      }
+                    },
+                    "socialMediaLinks": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "array"
+                        },
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "example": "object"
+                            },
+                            "properties": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "example": "string"
+                                    },
+                                    "example": {
+                                      "type": "string",
+                                      "example": "Twitter"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "example": "string"
+                                    },
+                                    "format": {
+                                      "type": "string",
+                                      "example": "url"
+                                    },
+                                    "example": {
+                                      "type": "string",
+                                      "example": "https://www.twitter.com/mariovargasllosa"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "example": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "example": "Twitter"
+                              },
+                              "url": {
+                                "type": "string",
+                                "example": "https://www.twitter.com/mariovargasllosa"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "contactInformation": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "array"
+                        },
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "example": "object"
+                            },
+                            "properties": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "example": "string"
+                                    },
+                                    "example": {
+                                      "type": "string",
+                                      "example": "Email"
+                                    }
+                                  }
+                                },
+                                "value": {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "example": "string"
+                                    },
+                                    "example": {
+                                      "type": "string",
+                                      "example": "mariovargasllosa@example.com"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "example": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "example": "Email"
+                              },
+                              "value": {
+                                "type": "string",
+                                "example": "mariovargasllosa@example.com"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "401": {
+            "description": "Unauthorized"
           }
         }
       },
@@ -415,6 +822,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "404": {
             "description": "Not Found"
@@ -440,6 +850,9 @@
           "200": {
             "description": "OK"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           }
@@ -462,6 +875,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           }
@@ -480,6 +896,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "404": {
             "description": "Not Found"
@@ -501,6 +920,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
@@ -512,6 +934,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       },
@@ -524,6 +949,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
@@ -532,7 +960,11 @@
       "get": {
         "description": "",
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
       }
     }
   }

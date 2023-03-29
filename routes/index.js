@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const validateJWT = require('../middlewares/validate-jwt');
 
 const bookRoutes = require('./book');
 
@@ -11,8 +12,8 @@ const reviewRouter = require('./review');
 
 router.use('/users', userRouter);
 router.use('/auth', authRouter);
-router.use('/authors', authorRouter);
-router.use('/reviews', reviewRouter);
+router.use('/authors', validateJWT, authorRouter);
+router.use('/reviews', validateJWT, reviewRouter);
 router.use('/', swagger);
 router.use('/books', bookRoutes);
 

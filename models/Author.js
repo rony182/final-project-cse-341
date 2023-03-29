@@ -28,7 +28,11 @@ const authorSchema = new mongoose.Schema({
   contactInformation: {
     type: String,
     required: false
-  }
+  },
+  books: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Books'
+  }]
 });
 
 const Author = mongoose.model('Author', authorSchema);

@@ -23,7 +23,6 @@ const hasRole = (...roles) => {
         msg: 'Need valid role'
       });
     }
-    console.log(req.user);
 
     if (!roles.includes(req.user.role)) {
       return res.status(401).json({
