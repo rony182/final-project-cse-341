@@ -10,6 +10,8 @@ const authorValidationRules = () => {
     check("website").optional().isURL(),
     check("socialMediaLinks").optional().isArray(),
     check("contactInformation").optional().isString(),
+    check("books").optional().isArray(),
+    check("books.*").isMongoId(),
     check("name").custom(async (value) => {
       const author = await Author.findOne({ name: value });
       if (author) {
@@ -20,22 +22,25 @@ const authorValidationRules = () => {
 };
 
 const authorUpdateValidationRules = () => {
-    return [
-      check('name').optional(),
-      check('birthdate').optional(),
-      check('nationality').optional(),
-      check('biography').optional(),
-      check('website').optional().isURL(),
-      check('socialMediaLinks').optional().isArray(),
-      check('contactInformation').optional().isString(),
-      check('name').custom(async (value, { req }) => {
-        const author = await Author.findOne({ name: value });
-        if (author && author._id.toString() !== req.params.id) {
-          return Promise.reject('Author name already in use');
-        }
-      })
-    ]
-  }
+  return [
+    check('name').optional(),
+    check('birthdate').optional(),
+    check('nationality').optional(),
+    check('biography').optional(),
+    check('website').optional().isURL(),
+    check('socialMediaLinks').optional().isArray(),
+    check('contactInformation').optional().isString(),
+    check("books").optional().isArray(),
+    check("books.*").optional().isMongoId(),
+    check('name').custom(async (value, { req }) => {
+      const author = await Author.findOne({ name: value });
+      if (author && author._id.toString() !== req.params.id) {
+        return Promise.reject('Author name already in use');
+      }
+    })
+  ]
+}
+
 
 module.exports = {
   authorValidationRules, authorUpdateValidationRules
