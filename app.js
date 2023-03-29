@@ -4,11 +4,13 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
 const dotenv = require('dotenv');
+
 dotenv.config();
 
 const port = process.env.PORT || 8080;
 
 const app = express();
+app.use(express.json())
 const allow = process.env.ALLOW_ORIGIN || "*";
 app
   .use(bodyParser.json())
@@ -48,6 +50,9 @@ mongoose.connection.on("error", (err) => {
   console.log(`Mongoose connection error: ${err}`);
 });
 
+
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
 });
+
+
