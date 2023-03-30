@@ -2,20 +2,23 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
   info: {
-    title: 'Library API',
-    description: 'Description',
+    title: "Library API",
+    description: "Description",
   },
   host: ['final-cse-341-group.onrender.com'],
-  // host: ['localhost:8080'],
+  // host: ["localhost:8080"],
 
-  schemes: ['https', 'http'],
+  schemes: ["https", "http"],
   securityDefinitions: {
-    Bearer: {
-      type: 'apiKey',
-      name: 'Authorization',
-      in: 'header',
+    apiKey: {
+      type: "apiKey",
+      name: "apiKey",
+
+      in: "header",
     },
   },
+
+  security: [{ apiKey: [] }],
 };
 
 const outputFile = './swagger.json';

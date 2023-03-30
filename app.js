@@ -50,9 +50,6 @@ mongoose.connection.on("error", (err) => {
   console.log(`Mongoose connection error: ${err}`);
 });
 
-const bookRoutes = require('./routes/book')
-app.use(bookRoutes)
-
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
 });

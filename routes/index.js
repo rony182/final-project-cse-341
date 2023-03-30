@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const validateJWT = require('../middlewares/validate-jwt');
 
-const bookRoutes = require('./book');
+const bookRouter = require('./book');
 
 const authRouter = require('./auth');
 const swagger = require('./swagger');
@@ -15,6 +15,6 @@ router.use('/auth', authRouter);
 router.use('/authors', validateJWT, authorRouter);
 router.use('/reviews', validateJWT, reviewRouter);
 router.use('/', swagger);
-router.use('/books', bookRoutes);
+router.use('/books', validateJWT, bookRouter);
 
 module.exports = router;

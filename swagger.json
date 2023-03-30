@@ -14,9 +14,9 @@
     "http"
   ],
   "securityDefinitions": {
-    "Bearer": {
+    "apiKey": {
       "type": "apiKey",
-      "name": "Authorization",
+      "name": "apiKey",
       "in": "header"
     }
   },
@@ -274,6 +274,7 @@
         "tags": [
           "Authors"
         ],
+        "summary": "Create a new author",
         "description": "Endpoint to create an author",
         "parameters": [
           {
@@ -520,7 +521,11 @@
         }
       },
       "get": {
-        "description": "",
+        "tags": [
+          "Authors"
+        ],
+        "summary": "Get all authors",
+        "description": "Endpoint to get all authors",
         "parameters": [],
         "responses": {
           "200": {
@@ -537,7 +542,11 @@
     },
     "/authors/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Authors"
+        ],
+        "summary": "Get an author by ID",
+        "description": "Endpoint to get an author by ID",
         "parameters": [
           {
             "name": "id",
@@ -810,7 +819,11 @@
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Authors"
+        ],
+        "summary": "Delete an author by ID",
+        "description": "Endpoint to delete an author by ID",
         "parameters": [
           {
             "name": "id",
@@ -837,7 +850,11 @@
     },
     "/reviews/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Get a review by ID",
+        "description": "Endpoint to get a review by ID",
         "parameters": [
           {
             "name": "id",
@@ -859,13 +876,35 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Update a review",
+        "description": "Endpoint to update a review",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "comment": {
+                  "example": "any"
+                },
+                "rating": {
+                  "example": "any"
+                },
+                "date": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -884,7 +923,11 @@
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Delete a review",
+        "description": "Endpoint to delete a review",
         "parameters": [
           {
             "name": "id",
@@ -908,7 +951,11 @@
     },
     "/reviews/user/{userId}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Get all reviews for a user",
+        "description": "Endpoint to get all reviews for a user",
         "parameters": [
           {
             "name": "userId",
@@ -929,7 +976,11 @@
     },
     "/reviews/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Get all reviews",
+        "description": "Endpoint to get all reviews",
         "parameters": [],
         "responses": {
           "200": {
@@ -941,8 +992,34 @@
         }
       },
       "post": {
-        "description": "",
-        "parameters": [],
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Create a new review",
+        "description": "Endpoint to create a new review",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "example": "any"
+                },
+                "bookId": {
+                  "example": "any"
+                },
+                "comment": {
+                  "example": "any"
+                },
+                "rating": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -967,7 +1044,7 @@
         }
       }
     },
-    "/books/book/{id}": {
+    "/books/{id}": {
       "get": {
         "tags": [
           "Books"
@@ -1083,7 +1160,7 @@
         }
       }
     },
-    "/books/book": {
+    "/books/": {
       "get": {
         "tags": [
           "Books"
@@ -1165,5 +1242,10 @@
         }
       }
     }
-  }
+  },
+  "security": [
+    {
+      "apiKey": []
+    }
+  ]
 }

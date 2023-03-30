@@ -8,6 +8,7 @@ const createAuthor = async (req, res) => {
   }
 
   // #swagger.tags = ['Authors']
+  // #swagger.summary = 'Create a new author'
   // #swagger.description = 'Endpoint to create an author'
   try {
     const { name, birthdate, nationality, biography, website, socialMediaLinks, contactInformation, books } = req.body;
@@ -90,6 +91,9 @@ const createAuthor = async (req, res) => {
  */
 
 const getAllAuthors = async (req, res) => {
+// #swagger.tags = ['Authors']
+  // #swagger.summary = 'Get all authors'
+// #swagger.description = 'Endpoint to get all authors'
   try {
     const authors = await Author.find();
     res.json(authors);
@@ -125,6 +129,9 @@ const getAllAuthors = async (req, res) => {
  *         description: Internal server error
  */
 const getAuthorById = async (req, res) => {
+  // #swagger.tags = ['Authors']
+  // #swagger.summary = 'Get an author by ID'
+  // #swagger.description = 'Endpoint to get an author by ID'
   try {
     const author = await Author.findById(req.params.id);
     if (!author) {
@@ -199,6 +206,7 @@ const updateAuthorById = async (req, res) => {
 
       } */
   const errors = validationResult(req);
+  
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
@@ -280,19 +288,22 @@ const updateAuthorById = async (req, res) => {
 
 
 const deleteAuthorById = async (req, res) => {
+  // #swagger.tags = ['Authors']
+  // #swagger.description = 'Endpoint to delete an author by ID'
+  //  #swagger.summary = 'Delete an author by ID'
   try {
-    const author = await Author.findById(req.params.id);
+    const author = await Author.findByIdAndDelete(req.params.id);
     if (!author) {
       return res.status(404).json({ msg: 'Author not found' });
     }
 
-    await author.remove();
     res.json({ msg: 'Author removed' });
   } catch (err) {
     console.error(err);
     res.status(500).send('Server error');
   }
 };
+
 
 
 
