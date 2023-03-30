@@ -6,7 +6,7 @@
     "version": "1.0.0"
   },
   "host": [
-    "final-cse-341-group.onrender.com"
+    "final-cse-341-group-cedn.onrender.com"
   ],
   "basePath": "/",
   "schemes": [
@@ -1078,11 +1078,6 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "apiKey",
-            "in": "header",
-            "type": "string"
           }
         ],
         "responses": {
@@ -1104,11 +1099,6 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "apiKey",
-            "in": "header",
             "type": "string"
           },
           {
@@ -1182,11 +1172,6 @@
         ],
         "description": "Endpoint creates a new Books",
         "parameters": [
-          {
-            "name": "apiKey",
-            "in": "header",
-            "type": "string"
-          },
           {
             "name": "Book",
             "in": "body",

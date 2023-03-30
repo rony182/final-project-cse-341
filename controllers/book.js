@@ -30,7 +30,7 @@ const getBookById = async (req,res) => {
 const getBooks  = async (req, res) => {
     // #swagger.tags = ['Books']
     // #swagger.description = 'Endpoint gets all Books'
-
+    console.log('getBooks');
     try{
         mongoose.connect(process.env.MONGODB_URI);
         const result = await Book.find();
