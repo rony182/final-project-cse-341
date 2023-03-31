@@ -1,15 +1,15 @@
-const isAdminRole = (req= Request, res= Response, next) => {
+const isAdminRole = (req = Request, res = Response, next) => {
   if (!req.user) {
     return res.status(500).json({
-      msg: 'Need valid role'
+      msg: "Need valid role",
     });
   }
 
   const { role, firstName } = req.user;
 
-  if (role !== 'ADMIN_ROLE') {
+  if (role !== "ADMIN_ROLE") {
     return res.status(401).json({
-      msg: `${firstName} is not admin`
+      msg: `${firstName} is not admin`,
     });
   }
 
@@ -17,16 +17,16 @@ const isAdminRole = (req= Request, res= Response, next) => {
 };
 
 const hasRole = (...roles) => {
-  return (req= Request, res= Response, next) => {
+  return (req = Request, res = Response, next) => {
     if (!req.user) {
       return res.status(500).json({
-        msg: 'Need valid role'
+        msg: "Need valid role",
       });
     }
 
     if (!roles.includes(req.user.role)) {
       return res.status(401).json({
-        msg: `The service need one of this roles= ${roles}`
+        msg: `The service need one of this roles= ${roles}`,
       });
     }
 
@@ -35,6 +35,6 @@ const hasRole = (...roles) => {
 };
 
 module.exports = {
-    isAdminRole,
-    hasRole
-}
+  isAdminRole,
+  hasRole,
+};

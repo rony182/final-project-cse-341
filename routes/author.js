@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 const {
@@ -11,22 +11,22 @@ const {
   getAllAuthors,
   getAuthorById,
   updateAuthorById,
-  deleteAuthorById
-} = require('../controllers/author');
+  deleteAuthorById,
+} = require("../controllers/author");
 
 // Create a new author
-router.post('/', authorValidationRules(), createAuthor);
+router.post("/", authorValidationRules(), createAuthor);
 
 // Get all authors
-router.get('/', getAllAuthors);
+router.get("/", getAllAuthors);
 
 // Get author by ID
-router.get('/:id', getAuthorById);
+router.get("/:id", getAuthorById);
 
 // Update author by ID
-router.put('/:id', authorUpdateValidationRules(), updateAuthorById);
+router.put("/:id", authorUpdateValidationRules(), updateAuthorById);
 
 // Delete author by ID
-router.delete('/:id', deleteAuthorById);
+router.delete("/:id", deleteAuthorById);
 
 module.exports = router;

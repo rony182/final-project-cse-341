@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 const {
@@ -15,21 +15,21 @@ const {
 } = require("../helpers/review");
 
 // Get a review by ID
-router.get('/:id', getReview);
+router.get("/:id", getReview);
 
 // Get all reviews for a user
-router.get('/user/:userId', getReviewsByUser);
+router.get("/user/:userId", getReviewsByUser);
 
 // Get all reviews
-router.get('/', getAllReviews);
+router.get("/", getAllReviews);
 
 // Create a new review
-router.post('/', createReviewValidator,  createReview);
+router.post("/", createReviewValidator, createReview);
 
 // Update a review by ID
-router.put('/:id', updateReviewValidator,  updateReview);
+router.put("/:id", updateReviewValidator, updateReview);
 
 // Delete a review by ID
-router.delete('/:id', deleteReview);
+router.delete("/:id", deleteReview);
 
 module.exports = router;

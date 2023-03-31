@@ -1,5 +1,5 @@
-const { check } = require('express-validator');
-const Author = require('../models/Author');
+const { check } = require("express-validator");
+const Author = require("../models/Author");
 
 const authorValidationRules = () => {
   return [
@@ -23,25 +23,25 @@ const authorValidationRules = () => {
 
 const authorUpdateValidationRules = () => {
   return [
-    check('name').optional(),
-    check('birthdate').optional(),
-    check('nationality').optional(),
-    check('biography').optional(),
-    check('website').optional().isURL(),
-    check('socialMediaLinks').optional().isArray(),
-    check('contactInformation').optional().isString(),
+    check("name").optional(),
+    check("birthdate").optional(),
+    check("nationality").optional(),
+    check("biography").optional(),
+    check("website").optional().isURL(),
+    check("socialMediaLinks").optional().isArray(),
+    check("contactInformation").optional().isString(),
     check("books").optional().isArray(),
     check("books.*").optional().isMongoId(),
-    check('name').custom(async (value, { req }) => {
+    check("name").custom(async (value, { req }) => {
       const author = await Author.findOne({ name: value });
       if (author && author._id.toString() !== req.params.id) {
-        return Promise.reject('Author name already in use');
+        return Promise.reject("Author name already in use");
       }
-    })
-  ]
-}
-
+    }),
+  ];
+};
 
 module.exports = {
-  authorValidationRules, authorUpdateValidationRules
+  authorValidationRules,
+  authorUpdateValidationRules,
 };

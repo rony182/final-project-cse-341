@@ -1,40 +1,42 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const authorSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   birthdate: {
     type: Date,
-    required: true
+    required: true,
   },
   nationality: {
     type: String,
-    required: true
+    required: true,
   },
   biography: {
     type: String,
-    required: true
+    required: true,
   },
   website: {
     type: String,
-    required: false
+    required: false,
   },
   socialMediaLinks: {
     type: [String],
-    required: false
+    required: false,
   },
   contactInformation: {
     type: String,
-    required: false
+    required: false,
   },
-  books: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Books'
-  }]
+  books: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Books",
+    },
+  ],
 });
 
-const Author = mongoose.model('Author', authorSchema);
+const Author = mongoose.model("Author", authorSchema);
 
 module.exports = Author;
