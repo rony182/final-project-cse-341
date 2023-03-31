@@ -688,6 +688,34 @@
         }
       }
     },
+    "/reviews/book/{bookId}": {
+      "get": {
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Get all reviews for a book",
+        "description": "Endpoint to get all reviews for a book",
+        "parameters": [
+          {
+            "name": "bookId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/reviews/": {
       "get": {
         "tags": [

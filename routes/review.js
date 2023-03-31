@@ -6,6 +6,7 @@ const {
   getReview,
   getReviewsByUser,
   getAllReviews,
+  getReviewsByBook,
   updateReview,
   deleteReview,
 } = require("../controllers/review");
@@ -19,6 +20,9 @@ router.get("/:id", getReview);
 
 // Get all reviews for a user
 router.get("/user/:userId", getReviewsByUser);
+
+// Get all reviews for a book
+router.get("/book/:bookId", getReviewsByBook);
 
 // Get all reviews
 router.get("/", getAllReviews);
