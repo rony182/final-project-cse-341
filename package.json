@@ -4,9 +4,10 @@
   "description": "Lybrary final project",
   "main": "app.js",
   "scripts": {
-    "test": "nodemon app.js",
+    "dev": "nodemon app.js",
     "start": "node app.js",
-    "start-gendoc": "node swagger.js"
+    "start-gendoc": "node swagger.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   },
   "homepage": "https://github.com/rony182/final-project-cse-341#readme",
   "devDependencies": {
+    "jest": "^29.5.0",
     "nodemon": "^2.0.20",
     "swagger-autogen": "^2.23.1"
   },
@@ -39,6 +41,7 @@
     "mongoose": "^7.0.2",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
+    "supertest": "^6.3.3",
     "swagger-ui-express": "^4.6.2"
   }
 }

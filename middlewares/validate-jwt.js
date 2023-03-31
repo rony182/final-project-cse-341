@@ -1,12 +1,12 @@
-const jwt = require("jsonwebtoken");
-const User = require("../models/User");
+const jwt = require('jsonwebtoken');
+const User = require('../models/User');
 
-const validateJWT = async (req = Request, res = Response, next) => {
-  const token = req.header("apiKey");
+const validateJWT = async (req = Request, res= Response, next) => {
+  const token = req.header('apiKey');
 
   if (!token) {
     return res.status(401).json({
-      msg: "No token in the request",
+      msg: 'No token in the request'
     });
   }
 
@@ -17,7 +17,7 @@ const validateJWT = async (req = Request, res = Response, next) => {
 
     if (!user) {
       return res.status(401).json({
-        msg: "Token not valid - user not exist in DB",
+        msg: 'Token not valid - user not exist in DB'
       });
     }
     req.user = user;
@@ -25,10 +25,10 @@ const validateJWT = async (req = Request, res = Response, next) => {
   } catch (error) {
     console.log({ error });
     res.status(401).json({
-      msg: "Token not valid",
+      msg: 'Token not valid'
     });
   }
-
+  
   console.log(token);
 };
 
