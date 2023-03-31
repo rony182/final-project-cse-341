@@ -6,7 +6,7 @@
     "version": "1.0.0"
   },
   "host": [
-    "final-cse-341-group-cedn.onrender.com"
+    "localhost:8080"
   ],
   "basePath": "/",
   "schemes": [
@@ -26,6 +26,7 @@
         "tags": [
           "Users"
         ],
+        "summary": "Endpoint to get all users",
         "description": "Endpoint get all users",
         "parameters": [
           {
@@ -53,6 +54,7 @@
         "tags": [
           "Users"
         ],
+        "summary": "Endpoint to create a user",
         "description": "Endpoint create a user",
         "parameters": [
           {
@@ -124,7 +126,7 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "description": "Endpoint get a user",
         "parameters": [
           {
             "name": "id",
@@ -146,6 +148,7 @@
         "tags": [
           "Users"
         ],
+        "summary": "Endpoint to update a user",
         "description": "Endpoint update a user",
         "parameters": [
           {
@@ -206,6 +209,7 @@
         "tags": [
           "Users"
         ],
+        "summary": "Endpoint to delete a user",
         "description": "Endpoint delete a user",
         "parameters": [
           {
@@ -1049,6 +1053,7 @@
         "tags": [
           "Books"
         ],
+        "summary": "Endpoint to get a Book by Id",
         "description": "Endpoint gets Book by Id",
         "parameters": [
           {
@@ -1071,6 +1076,7 @@
         "tags": [
           "Books"
         ],
+        "summary": "Endpoint to delete a Book by Id",
         "description": "Endpoint deletes book by Id",
         "parameters": [
           {
@@ -1093,6 +1099,7 @@
         "tags": [
           "Books"
         ],
+        "summary": "Endpoint to update a Book by Id",
         "description": "Endpoint updates an existing book",
         "parameters": [
           {
@@ -1155,6 +1162,7 @@
         "tags": [
           "Books"
         ],
+        "summary": "Endpoint to get all Books",
         "description": "Endpoint gets all Books",
         "parameters": [],
         "responses": {
@@ -1170,6 +1178,7 @@
         "tags": [
           "Books"
         ],
+        "summary": "Endpoint to create a new Book",
         "description": "Endpoint creates a new Books",
         "parameters": [
           {
