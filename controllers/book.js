@@ -6,6 +6,7 @@ const Book = require('../models/Book')
 
 const getBookById = async (req,res) => {
     // #swagger.tags = ['Books']
+    // #swagger.summary = 'Endpoint to get a Book by Id'
     // #swagger.description = 'Endpoint gets Book by Id'
     try{
         const result = await Book.findById(req.params.id);
@@ -29,6 +30,7 @@ const getBookById = async (req,res) => {
 
 const getBooks  = async (req, res) => {
     // #swagger.tags = ['Books']
+    // #swagger.summary = 'Endpoint to get all Books'
     // #swagger.description = 'Endpoint gets all Books'
     console.log('getBooks');
     try{
@@ -56,6 +58,7 @@ const getBooks  = async (req, res) => {
 
 const createBook  = async (req, res) => {
     // #swagger.tags = ['Books']
+    // #swagger.summary = 'Endpoint to create a new Book'
     // #swagger.description = 'Endpoint creates a new Books'
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
@@ -96,32 +99,9 @@ const createBook  = async (req, res) => {
      */
 }
 
-const deleteBook = async (req, res) => {
-    // #swagger.tags = ['Books']
-    // #swagger.description = 'Endpoint deletes book by Id'
-    try{
-        const bookId = new ObjectId(req.params.id);
-        await Book.deleteOne({_id : bookId})
-        res.status(204).send("Deleted book");
-    }catch(e){
-        console.error(e);
-    }
-
-        /**
-     * @swagger
-     * /api/endpoint:
-     *   get:
-     *     description: Descripción del endpoint
-     *     security:
-     *       - apiKey: []
-     *     responses:
-     *       '200':
-     *         description: Respuesta exitosa
-     */
-}
-
 const updateBook = async (req, res) => {
     // #swagger.tags = ['Books']
+    // #swagger.summary = 'Endpoint to update a Book by Id'
     // #swagger.description = 'Endpoint updates an existing book'
     try{
         const bookId = new ObjectId(req.params.id);
@@ -146,6 +126,32 @@ const updateBook = async (req, res) => {
       */
   
     /**
+     * @swagger
+     * /api/endpoint:
+     *   get:
+     *     description: Descripción del endpoint
+     *     security:
+     *       - apiKey: []
+     *     responses:
+     *       '200':
+     *         description: Respuesta exitosa
+     */
+}
+
+
+const deleteBook = async (req, res) => {
+    // #swagger.tags = ['Books']
+    // #swagger.summary = 'Endpoint to delete a Book by Id'
+    // #swagger.description = 'Endpoint deletes book by Id'
+    try{
+        const bookId = new ObjectId(req.params.id);
+        await Book.deleteOne({_id : bookId})
+        res.status(204).send("Deleted book");
+    }catch(e){
+        console.error(e);
+    }
+
+        /**
      * @swagger
      * /api/endpoint:
      *   get:

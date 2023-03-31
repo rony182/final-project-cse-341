@@ -4,6 +4,7 @@ const User = require('../models/User');
 
 const createUser = async (req = request, res= response) => {
     // #swagger.tags = ['Users']
+    // #swagger.summary = 'Endpoint to create a user'
     // #swagger.description = 'Endpoint create a user'
     try {
       const body = req.body;
@@ -42,6 +43,8 @@ const createUser = async (req = request, res= response) => {
 
 const findOne = async (req = request, res = response) => {
     // #swagger.tags = ['Users']
+    // #swagger.description = 'Endpoint get a user'
+    // $swagger.summary = 'Endpoint to get a user'
     const { id } = req.params;
     const user = await User.findById(id);
   
@@ -64,6 +67,7 @@ const findOne = async (req = request, res = response) => {
   
 const findAll = async ( req, res = response) => {
     // #swagger.tags = ['Users']
+    // #swagger.summary = 'Endpoint to get all users'
     // #swagger.description = 'Endpoint get all users'
   
     try {
@@ -91,6 +95,7 @@ const findAll = async ( req, res = response) => {
   
 const deleteUser = async (req = request, res = response) => {
     // #swagger.tags = ['Users']
+    // #swagger.summary = 'Endpoint to delete a user'
     // #swagger.description = 'Endpoint delete a user'
     try {
       const { id } = req.params;
@@ -121,6 +126,7 @@ const deleteUser = async (req = request, res = response) => {
   
 const updateUser = async (req = request, res = response) => {
     // #swagger.tags = ['Users']
+    // #swagger.summary = 'Endpoint to update a user'
     // #swagger.description = 'Endpoint update a user'
   
     try {
