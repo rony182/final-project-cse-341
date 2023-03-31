@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-const validateJWT = async (req = Request, res= Response, next) => {
-  const token = req.header('apiKey');
+const validateJWT = async (req, res, next) => {
+  let token = req.header('Authorization');
 
   if (!token) {
     return res.status(401).json({
@@ -10,16 +10,21 @@ const validateJWT = async (req = Request, res= Response, next) => {
     });
   }
 
-  try {
-    const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+  if (token.startsWith('Bearer ')) {
+    token = token.slice(7);
+  }
 
-    const user = await User.findById(uid);
+  try {
+    const decoded = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+
+    const user = await User.findById(decoded.uid);
 
     if (!user) {
       return res.status(401).json({
         msg: 'Token not valid - user not exist in DB'
       });
     }
+
     req.user = user;
     next();
   } catch (error) {
@@ -28,8 +33,7 @@ const validateJWT = async (req = Request, res= Response, next) => {
       msg: 'Token not valid'
     });
   }
-  
-  console.log(token);
 };
+
 
 module.exports = validateJWT;

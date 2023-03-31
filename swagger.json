@@ -6,7 +6,7 @@
     "version": "1.0.0"
   },
   "host": [
-    "final-cse-341-group-cedn.onrender.com"
+    "localhost:8080"
   ],
   "basePath": "/",
   "schemes": [
@@ -16,7 +16,7 @@
   "securityDefinitions": {
     "apiKey": {
       "type": "apiKey",
-      "name": "apiKey",
+      "name": "Authorization",
       "in": "header"
     }
   },
@@ -30,7 +30,7 @@
         "description": "Endpoint get all users",
         "parameters": [
           {
-            "name": "apiKey",
+            "name": "Authorization",
             "in": "header",
             "type": "string"
           }

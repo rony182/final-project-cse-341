@@ -12,12 +12,11 @@ const doc = {
   securityDefinitions: {
     apiKey: {
       type: "apiKey",
-      name: "apiKey",
+      name: "Authorization",
 
       in: "header",
     },
   },
-
   security: [{ apiKey: [] }],
 };
 
