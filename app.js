@@ -30,7 +30,7 @@ app
 
 app.use(
   session({
-    secret: process.env.SECRETORPRIVATEKEY || "mysecret",
+    secret: "mysecret",
     resave: false,
     saveUninitialized: false,
   })
@@ -55,3 +55,5 @@ mongoose.connection.on("error", (err) => {
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
 });
+
+module.exports = app;
