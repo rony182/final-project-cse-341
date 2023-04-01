@@ -39,7 +39,6 @@ const createUserValidation = [
 
 const updateUserValidation = [
   validateJWT,
-  isAdminRole,
   check("id", "Is not a mongodb id").isMongoId(),
   check("id").custom(userExistById),
   check("firstName", "Firstname must be a string").optional().isString(),
