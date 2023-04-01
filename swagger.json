@@ -253,11 +253,11 @@
               "properties": {
                 "email": {
                   "type": "string",
-                  "example": "test1@gmail.com"
+                  "example": "admin@test.com"
                 },
                 "password": {
                   "type": "string",
-                  "example": "12345"
+                  "example": "$ecretPassword"
                 }
               },
               "required": [

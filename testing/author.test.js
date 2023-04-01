@@ -1,7 +1,8 @@
 const request = require("supertest");
 const Author = require("../models/Author");
+process.env.PORT = 8080;
 const app = require("../app");
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDI3N2RlYjYxYTJkY2JlNzFkNGNjNDEiLCJpYXQiOjE2ODAzMDk3NTAsImV4cCI6MTY4MDMyNDE1MH0.XqveN5I9PyEYDBL8fYqvqLXVjj_3zEofKc1_WJFUTfk";
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDI0ZjdlMDc1ODgzYjM2NGJkMmFkZmQiLCJpYXQiOjE2ODAzODk5MTEsImV4cCI6MTY4MDQwNDMxMX0.SVrmCbaqUOyIQhg-1Piy752ejCwuop3DP54M75wuvqA";
 
 describe("GET /authors", () => {
   test("responds with success for an authorized request", (done) => {

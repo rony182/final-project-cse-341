@@ -1,8 +1,8 @@
 const request = require("supertest");
 const User = require("../models/User");
+process.env.PORT = 8081;
 const app = require("../app");
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDI0ZjdlMDc1ODgzYjM2NGJkMmFkZmQiLCJpYXQiOjE2ODAzNjcxNDcsImV4cCI6MTY4MDM4MTU0N30.vbjIXC9z17M2WbAbaPOcd02ZI82Qhtm98bM9T8fUI0c";
+const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDI0ZjdlMDc1ODgzYjM2NGJkMmFkZmQiLCJpYXQiOjE2ODAzODk5MTEsImV4cCI6MTY4MDQwNDMxMX0.SVrmCbaqUOyIQhg-1Piy752ejCwuop3DP54M75wuvqA";
 
 describe("GET /users", () => {
   test("responds with success for an authorized request", (done) => {

@@ -43,8 +43,8 @@ const login = async (req = request, res = response) => {
         description: 'Product Information',
         required: true,
         schema: { 
-          $email:"test1@gmail.com", 
-          $password:"12345", 
+          $email:"admin@test.com", 
+          $password:"$ecretPassword", 
           
         }
       } 
