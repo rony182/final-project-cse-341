@@ -12,6 +12,7 @@ const {
   getAuthorById,
   updateAuthorById,
   deleteAuthorById,
+  getAuthorbybook
 } = require("../controllers/author");
 
 // Create a new author
@@ -22,6 +23,9 @@ router.get("/", getAllAuthors);
 
 // Get author by ID
 router.get("/:id", getAuthorById);
+
+// Get author by book
+router.get("/book/:bookId", getAuthorbybook);
 
 // Update author by ID
 router.put("/:id", authorUpdateValidationRules(), updateAuthorById);
