@@ -1,9 +1,11 @@
 const { validationResult } = require("express-validator");
 const Author = require("../models/Author");
+const Book = require("../models/Book");
 
 const createAuthor = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
+    console.log(errors);
     return res.status(400).json({ errors: errors.array() });
   }
   // #swagger.tags = ['Authors']
@@ -28,6 +30,7 @@ const createAuthor = async (req, res) => {
         (id) => !bookIds.map((book) => String(book._id)).includes(String(id))
       );
       if (invalidBookIds.length > 0) {
+        console.log(`Invalid book IDs: ${invalidBookIds.join(", ")}`);
         return res
           .status(400)
           .json({ msg: `Invalid book IDs: ${invalidBookIds.join(", ")}` });

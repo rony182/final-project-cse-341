@@ -6,7 +6,7 @@
     "version": "1.0.0"
   },
   "host": [
-    "localhost:8080"
+    "final-cse-341-group-cedn.onrender.com"
   ],
   "basePath": "/",
   "schemes": [
@@ -29,6 +29,11 @@
         "summary": "Endpoint to get all users",
         "description": "Endpoint get all users",
         "parameters": [
+          {
+            "name": "slice(7",
+            "in": "header",
+            "type": "string"
+          },
           {
             "name": "Authorization",
             "in": "header",
@@ -519,6 +524,37 @@
         "parameters": [
           {
             "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/authors/book/{bookId}": {
+      "get": {
+        "tags": [
+          "Authors"
+        ],
+        "summary": "Get an author by book",
+        "description": "Endpoint to get an author by book",
+        "parameters": [
+          {
+            "name": "bookId",
             "in": "path",
             "required": true,
             "type": "string"
