@@ -2,7 +2,18 @@ const request = require("supertest");
 const User = require("../models/User");
 process.env.PORT = 8081;
 const app = require("../app");
-const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDI0ZjdlMDc1ODgzYjM2NGJkMmFkZmQiLCJpYXQiOjE2ODAzODk5MTEsImV4cCI6MTY4MDQwNDMxMX0.SVrmCbaqUOyIQhg-1Piy752ejCwuop3DP54M75wuvqA";
+
+let token; // declare token variable
+
+beforeAll(async () => {
+  // log in and retrieve token
+  const response = await request(app)
+    .post('/auth/login')
+    .send({ email: 'admin@test.com', password: '$ecretPassword' });
+
+  token = response.body.token; // set token to response body
+}, 50000);
+
 
 describe("GET /users", () => {
   test("responds with success for an authorized request", (done) => {
