@@ -112,6 +112,7 @@ const updateReview = async (req, res, next) => {
   // Validate request body
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
+    console.log(errors);
     return res.status(400).json({ errors: errors.array() });
   }
 
@@ -123,7 +124,6 @@ const updateReview = async (req, res, next) => {
 
     review.comment = req.body.comment;
     review.rating = req.body.rating;
-    review.date = req.body.date;
 
     const updatedReview = await review.save();
     res.json(updatedReview);

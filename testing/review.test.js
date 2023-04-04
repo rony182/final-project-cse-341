@@ -2,8 +2,9 @@ const request = require("supertest");
 process.env.PORT = 8082;
 const app = require("../app");
 const Review = require("../models/Review");
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDI0ZjdlMDc1ODgzYjM2NGJkMmFkZmQiLCJpYXQiOjE2ODA1NDg0MTAsImV4cCI6MTY4MDU2MjgxMH0.J57lk8pdSoQ9FOsAaoEy4dwa6DcxYy1J4YkVchpoDy0";
+const dotenv = require("dotenv");
+dotenv.config();
+const token = process.env.JWT_TOKEN;
 
 describe("GET /reviews", () => {
   test("responds with success for an authorized request", (done) => {
@@ -50,32 +51,29 @@ describe("GET /reviews/:id", () => {
             });
   });
 
-// describe("PUT /reviews/:id", () => {
-//   test("responds with updated reviews data", (done) => {
+describe("PUT /reviews/:id", () => {
+  test("responds with updated reviews data", (done) => {
 
-//     const reviewId = "642504ee30fee94eb9103494";
+    const reviewId = "642504ee30fee94eb9103494";
+    const updateReviewData = { 
+        "rating": "10",
+        "comment": "Lorem Ipsum",
+    };
 
-//     const updateReviewData = { 
-//         "rating": "10",
-//         "comment": "Lorem Ipsum",
-//         "date": "2023-03-30T03:41:34.095Z",
-//     };
-
-//     request(app)
-//       .put(`/reviews/${reviewId}`)
-//       .set("Authorization", `Bearer ${token}`)
-//       .send(updateReviewData)
-//       .expect(200)
-//       .end((err, res) => {
-//         if (err) return done(err);
+    request(app)
+      .put(`/reviews/${reviewId}`)
+      .set("Authorization", `Bearer ${token}`)
+      .send(updateReviewData)
+      .expect(200)
+      .end((err, res) => {
+        if (err) return done(err);
         
-//         expect(res.body).toHaveProperty("comment", "Lorem Ipsum");
-//         expect(res.body).toHaveProperty("date", "2023-03-30T03:41:34.095Z");
-//         expect(res.body).toHaveProperty("rating", 10);
-//         done();
-//       });
-//   }, 20000);
-// });
+        expect(res.body).toHaveProperty("comment", "Lorem Ipsum");
+        expect(res.body).toHaveProperty("rating", 10);
+        done();
+      });
+  }, 20000);
+});
 
   describe('DELETE /reviews/:id', () => {
     test('should delete an author by ID', async () => {

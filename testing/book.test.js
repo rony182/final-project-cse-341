@@ -1,9 +1,11 @@
 const request = require("supertest");
-process.env.PORT = 3030;
+process.env.PORT = 8081;
 const app = require("../app");
 const ObjectId = require("mongodb").ObjectId;
 const Book = require('../models/Book')
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDI0ZjdlMDc1ODgzYjM2NGJkMmFkZmQiLCJpYXQiOjE2ODA1NjE1NzgsImV4cCI6MTY4MDU3NTk3OH0.NV9a4vUOUy6MBxI0_KoY2r0KWUi-MsMQoV3NF9weHQM";
+const dotenv = require("dotenv");
+dotenv.config();
+const token = process.env.JWT_TOKEN;
 
 describe('GET /books' ,() => {
     test('Responds successfully to an authorized request', (done) => {
