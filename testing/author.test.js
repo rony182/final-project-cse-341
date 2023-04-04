@@ -33,7 +33,7 @@ describe("GET /authors", () => {
 describe("GET /authors/:id", () => {
     test("responds with success for an authorized request with a valid API KEY", (done) => {
       request(app)
-        .get("/authors/64277ea5664e29680be33d61") // replace 1 with the id of the author you want to retrieve
+        .get("/authors/6427881f122198cad283eb68") // replace 1 with the id of the author you want to retrieve
         .set("Accept", "application/json")
         .set("Authorization", `Bearer ${token}`)
         .expect("Content-Type", /json/)
@@ -41,7 +41,7 @@ describe("GET /authors/:id", () => {
         .end((err, res) => {
           if (err) return done(err);
           expect(res.body).toBeDefined();
-          expect(res.body.name).toBe("Mario Vargas Llosa"); // replace name with the name of the author you expect to retrieve
+          expect(res.body.name).toBe("Gabriel García Márquez"); // replace name with the name of the author you expect to retrieve
           done();
         });
     }, 20000);
@@ -110,7 +110,7 @@ describe("GET /authors/:id", () => {
         website: "https://gabrielgarciamarquez.com",
         socialMediaLinks: ["https://www.twitter.com/ggm"],
         contactInformation: "ggm@example.com",
-        books: ["6424ffa114483dd7b918b88f"]
+        books: ["642b56ac75a47b0daa405444"]
       };
   
       request(app)
@@ -129,7 +129,7 @@ describe("GET /authors/:id", () => {
           expect(res.body).toHaveProperty("website", "https://gabrielgarciamarquez.com");
           expect(res.body).toHaveProperty("socialMediaLinks", ["https://www.twitter.com/ggm"]);
           expect(res.body).toHaveProperty("contactInformation", "ggm@example.com");
-          expect(res.body).toHaveProperty("books", ["6424ffa114483dd7b918b88f"]);
+          expect(res.body).toHaveProperty("books", ["642b56ac75a47b0daa405444"]);
   
           done();
         });

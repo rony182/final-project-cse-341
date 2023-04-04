@@ -32,7 +32,7 @@ describe('GET /books' ,() => {
 describe('GET /books/id', () => {
     test('Responds successfully to an authorized request', (done) => {
         request(app)
-        .get('/books/6424ffa114483dd7b918b88f')
+        .get('/books/642b56ac75a47b0daa405444')
         .set("Accept", "application/json")
         .set("Authorization", `Bearer ${token}`)
         .expect("Content-Type", /json/)
@@ -40,8 +40,8 @@ describe('GET /books/id', () => {
         .end((err, res) => {
             if (err) return done(err);
             expect(res.body).toBeDefined();
-            expect(res.body.title).toBe('The Bible')
-            expect(res.body.pages).toBe(987)
+            expect(res.body.title).toBe('Narnia')
+            expect(res.body.pages).toBe(999)
             done();
         });
         
