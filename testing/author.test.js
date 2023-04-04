@@ -1,6 +1,11 @@
-const dotenv = require("dotenv");
-dotenv.config();
-const token = process.env.JWT_TOKEN;
+beforeAll(async () => {
+  // log in and retrieve token
+  const response = await request(app)
+    .post('/auth/login')
+    .send({ email: 'admin@test.com', password: '$ecretPassword' });
+
+  token = response.body.token; // set token to response body
+}, 50000);
 
 const request = require("supertest");
 const Author = require("../models/Author");
@@ -96,8 +101,9 @@ describe("GET /authors/:id", () => {
   
   describe("POST /authors", () => {
     test("responds with created author data", (done) => {
+      const name = `Gabriel García Márquez${Math.random()}`;
       const newAuthorData = {
-        name: "Gabriel García Márquez2",
+        name: name,
         birthdate: "1927-03-06",
         nationality: "Colombian",
         biography: "Gabriel García Márquez was a Colombian novelist, short-story writer, screenwriter, and journalist.",
@@ -116,7 +122,7 @@ describe("GET /authors/:id", () => {
         .end((err, res) => {
           if (err) return done(err);
   
-          expect(res.body).toHaveProperty("name", "Gabriel García Márquez2");
+          expect(res.body).toHaveProperty("name", name);
           expect(res.body).toHaveProperty("birthdate", "1927-03-06T00:00:00.000Z");
           expect(res.body).toHaveProperty("nationality", "Colombian");
           expect(res.body).toHaveProperty("biography", "Gabriel García Márquez was a Colombian novelist, short-story writer, screenwriter, and journalist.");

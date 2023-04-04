@@ -2,10 +2,15 @@ const request = require("supertest");
 process.env.PORT = 8082;
 const app = require("../app");
 const Review = require("../models/Review");
-const dotenv = require("dotenv");
-dotenv.config();
-const token = process.env.JWT_TOKEN;
 
+beforeAll(async () => {
+  // log in and retrieve token
+  const response = await request(app)
+    .post('/auth/login')
+    .send({ email: 'admin@test.com', password: '$ecretPassword' });
+
+  token = response.body.token; // set token to response body
+}, 50000);
 describe("GET /reviews", () => {
   test("responds with success for an authorized request", (done) => {
     request(app)
